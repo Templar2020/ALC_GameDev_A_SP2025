@@ -21,9 +21,11 @@ public class ProjectileWeapon : MonoBehaviour
 
     void Awake()
     {
-        //are we attached to the player?
+        //Are we attached to the player?
         if(GetComponent<PlayerController>())
             isPlayer = true;
+
+        curAmmo = maxAmmo;
     }
     public bool CanShoot()
     {
@@ -40,11 +42,12 @@ public class ProjectileWeapon : MonoBehaviour
     {
         //Cooldown and reduce ammo 
         lastShootTime = Time.time;
-        curAmmo--;
+        curAmmo--;// Current ammo minus one
+
         //Instantiate projectile
         GameObject projectileObject = Instantiate(projectile, firePoint.position, firePoint.rotation);
 
-        // set the velocity of the projectile
+        // Set the velocity of the projectile
         projectileObject.GetComponent<Rigidbody>().velocity = firePoint.forward * projectileSpeed;
     }
 }

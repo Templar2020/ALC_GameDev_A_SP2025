@@ -15,7 +15,8 @@ public class PlayerController : MonoBehaviour
 
     private Camera cam;
     private Rigidbody rig;
-    //private ProjectileWeapon weapon;
+    [Header("Weapon")]
+    private ProjectileWeapon weapon; // Reference the Weapon Script
     
 
     
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
         //Get the components
         cam = Camera.main;
         rig = GetComponent<Rigidbody>();
-        //weapon = GetComponent<ProjectileWeapon>();
+        weapon = GetComponent<ProjectileWeapon>();//Get Weapon Script Component
 
         // Disable and Hide the Cursor
         Cursor.lockState = CursorLockMode.Locked;
@@ -40,11 +41,11 @@ public class PlayerController : MonoBehaviour
        if(Input.GetButtonDown("Jump"))
             TryJump();
 
-      /* if(Input.GetButton("Fire1"))
+      if(Input.GetButton("Fire1"))
        {
-            if(weapon.CanShoot())
-                weapon.Shoot();
-       }*/
+            if(weapon.CanShoot())//If CanShoot is true
+                weapon.Shoot(); //Fire the weapon
+       }
 
 
             
